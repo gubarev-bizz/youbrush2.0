@@ -5,17 +5,18 @@ namespace YouBrush\Bundle\ThemeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @Route
- */
 class ThemeController extends Controller
 {
     /**
-     * @param $name
      * @return Response
      */
-    public function indexAction($name)
+    public function themeListAction()
     {
-        return $this->render('', array('name' => $name));
+        $em = $this->getDoctrine();
+        $themes = $em->getRepository('YouBrushThemeBundle:Theme')->findAll();
+
+        return $this->render('YouBrushThemeBundle:Theme:list.html.twig', [
+            'themes' => $themes,
+        ]);
     }
 }

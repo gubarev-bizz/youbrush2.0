@@ -1,0 +1,7 @@
+youbrush_theme_bundle_theme_list:
+    path: /theme/list
+    defaults: { _controller: YouBrushThemeBundle:Theme:themeList }
+
+youbrush_theme_bundle_constructor_item:
+    path: /theme/constructor/{themeId}
+    defaults: { _controller: YouBrushThemeBundle:Constructor:item }

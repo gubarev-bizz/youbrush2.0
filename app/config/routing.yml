@@ -1,4 +1,3 @@
-app:
-#    resource: "@AppBundle/Controller/"
-    resource: "@YouBrushBundle/ThemeBundle/Controller"
-    type:     annotation
+youbrush_theme_bundle:
+    resource: "@YouBrushThemeBundle/Resources/config/routing.yml"
+    prefix:   /

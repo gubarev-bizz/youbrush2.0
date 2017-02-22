@@ -1,0 +1,3 @@
+include:
+    - Data/theme.yml
+    - Data/component.yml

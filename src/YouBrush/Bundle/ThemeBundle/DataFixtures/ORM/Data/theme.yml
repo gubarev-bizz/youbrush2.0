@@ -1,0 +1,15 @@
+YouBrush\Bundle\ThemeBundle\Entity\Theme:
+    ThemeTest (template):
+        title: <firstName()>
+
+    Demo1ThemeTest (extends ThemeTest):
+        title: "Demo1"
+
+    Demo2ThemeTest (extends ThemeTest):
+        title: "Demo2"
+
+    Demo3ThemeTest (extends ThemeTest):
+        title: "Demo3"
+
+    Demo4ThemeTest (extends ThemeTest):
+        title: "Demo4"

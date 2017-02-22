@@ -1,0 +1,16 @@
+YouBrush\Bundle\ThemeBundle\Entity\Component:
+    ComponentTest (template):
+        systemName: ""
+        systemLegalName: ""
+
+    GalleryComponentTest (extends ComponentTest):
+        systemName: "gallery"
+        systemLegalName: "Gallery"
+
+    HomePageComponentTest (extends ComponentTest):
+        systemName: "home_page"
+        systemLegalName: "Home Page"
+
+    ContactPageComponentTest (extends ComponentTest):
+        systemName: "contact_page"
+        systemLegalName: "Contact Page"
