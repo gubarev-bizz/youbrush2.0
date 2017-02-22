@@ -1,0 +1,4 @@
+app:
+#    resource: "@AppBundle/Controller/"
+    resource: "@YouBrushBundle/ThemeBundle/Controller"
+    type:     annotation
