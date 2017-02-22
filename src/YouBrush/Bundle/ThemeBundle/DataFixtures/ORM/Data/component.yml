@@ -6,10 +6,12 @@ YouBrush\Bundle\ThemeBundle\Entity\Component:
     GalleryComponentTest (extends ComponentTest):
         systemName: "gallery"
         systemLegalName: "Gallery"
+        themes: ["@Demo1ThemeTest"]
 
     HomePageComponentTest (extends ComponentTest):
         systemName: "home_page"
         systemLegalName: "Home Page"
+        themes: ["@Demo1ThemeTest"]
 
     ContactPageComponentTest (extends ComponentTest):
         systemName: "contact_page"

@@ -1,9 +1,11 @@
 YouBrush\Bundle\ThemeBundle\Entity\Theme:
     ThemeTest (template):
         title: <firstName()>
+        components: []
 
     Demo1ThemeTest (extends ThemeTest):
         title: "Demo1"
+        components: ["@GalleryComponentTest", "@HomePageComponentTest"]
 
     Demo2ThemeTest (extends ThemeTest):
         title: "Demo2"

@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use YouBrush\Bundle\ThemeBundle\Entity\Traits\IdentifiableEntityTrait;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentRepository")
  */
 class Component
 {
@@ -28,6 +28,12 @@ class Component
      * @SymfonyConstraints\NotBlank()
      */
     private $systemLegalName;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Theme", inversedBy="components", cascade={"persist"})
+     * @ORM\JoinTable(name="theme_components")
+     */
+    private $themes;
 
     /**
      * @return string
@@ -59,5 +65,29 @@ class Component
     public function setSystemLegalName($systemLegalName)
     {
         $this->systemLegalName = $systemLegalName;
+    }
+
+    /**
+     * @param Theme $themes
+     */
+    public function addTheme(Theme $themes)
+    {
+        $this->themes[] = $themes;
+    }
+
+    /**
+     * @return Theme[]
+     */
+    public function getThemes()
+    {
+        return $this->themes;
+    }
+
+    /**
+     * @param Theme[] $themes
+     */
+    public function setThemes($themes)
+    {
+        $this->themes = $themes;
     }
 }

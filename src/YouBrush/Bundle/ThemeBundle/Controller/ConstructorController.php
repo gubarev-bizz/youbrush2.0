@@ -22,7 +22,7 @@ class ConstructorController extends Controller
             throw new NotFoundHttpException(sprintf("Theme with id = %s not found.", $themeId));
         }
 
-
+        $this->get('youbrush_theme_bundle.constructor_manager')->process($theme);
 
         return $this->render('YouBrushThemeBundle:Constructor:item.html.twig');
     }

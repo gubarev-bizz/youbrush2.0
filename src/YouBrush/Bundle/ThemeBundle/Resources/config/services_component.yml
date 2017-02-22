@@ -1,6 +1,8 @@
 services:
     youbrush_theme_bundle.constructor_manager:
         class: YouBrush\Bundle\ThemeBundle\Constructor\ConstructorManager
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
 
     youbrush_theme_bundle.component.gallery:
         class: YouBrush\Bundle\ThemeBundle\Constructor\Component\GalleryComponent\GalleryProcessor
