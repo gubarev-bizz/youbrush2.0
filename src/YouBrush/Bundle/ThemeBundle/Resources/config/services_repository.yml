@@ -1,0 +1,6 @@
+services:
+    youbrush_theme_bundle.repository.component:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - YouBrush\Bundle\ThemeBundle\Entity\Component

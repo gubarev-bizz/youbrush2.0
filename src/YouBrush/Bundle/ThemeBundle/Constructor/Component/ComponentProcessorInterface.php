@@ -2,6 +2,7 @@
 
 namespace YouBrush\Bundle\ThemeBundle\Constructor\Component;
 
+use YouBrush\Bundle\ThemeBundle\Entity\Component;
 use YouBrush\Bundle\ThemeBundle\Entity\Theme;
 
 interface ComponentProcessorInterface
@@ -11,4 +12,11 @@ interface ComponentProcessorInterface
      * @return mixed
      */
     public function process(Theme $theme);
+
+    public function form();
+
+    /**
+     * @return Component
+     */
+    public function getEntity();
 }

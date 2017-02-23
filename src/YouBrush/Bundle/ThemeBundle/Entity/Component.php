@@ -5,9 +5,11 @@ namespace YouBrush\Bundle\ThemeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use YouBrush\Bundle\ThemeBundle\Entity\Traits\IdentifiableEntityTrait;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentRepository")
+ * @UniqueEntity(fields="systemName", message="This system name is already in use.")
  */
 class Component
 {

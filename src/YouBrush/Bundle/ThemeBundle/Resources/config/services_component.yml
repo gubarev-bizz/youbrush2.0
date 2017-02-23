@@ -6,5 +6,8 @@ services:
 
     youbrush_theme_bundle.component.gallery:
         class: YouBrush\Bundle\ThemeBundle\Constructor\Component\GalleryComponent\GalleryProcessor
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@youbrush_theme_bundle.repository.component'
         tags:
             - { name: 'youbrush_theme_bundle.components', type: 'gallery' }
