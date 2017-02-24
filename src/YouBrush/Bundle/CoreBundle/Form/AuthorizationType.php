@@ -33,9 +33,4 @@ class AuthorizationType extends AbstractType
             'data_class' => User::class,
         ]);
     }
-
-    public function getName()
-    {
-        return 'you_brush_core_bundle_authorization';
-    }
 }

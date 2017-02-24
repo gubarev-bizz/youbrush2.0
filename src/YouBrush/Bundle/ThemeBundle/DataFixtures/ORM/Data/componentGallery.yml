@@ -1,0 +1,15 @@
+YouBrush\Bundle\ThemeBundle\Entity\ComponentGallery:
+    ComponentGalleryTest (template):
+        title: ""
+
+    GalleryComponent1Test (extends ComponentGalleryTest):
+        title: "Demo1"
+        users: ["@UserAdminTest"]
+
+    GalleryComponent2Test (extends ComponentGalleryTest):
+        title: "Demo2"
+        users: ["@UserAdminTest"]
+
+    GalleryComponent3Test (extends ComponentGalleryTest):
+        title: "Demo3"
+        users: ["@UserAdminTest"]

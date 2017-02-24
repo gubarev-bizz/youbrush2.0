@@ -2,12 +2,14 @@
 
 namespace YouBrush\Bundle\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use YouBrush\Bundle\CoreBundle\Entity\Traits\IdentifiableEntityTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Role\Role;
+use YouBrush\Bundle\ThemeBundle\Entity\ComponentGallery;
 
 /**
  * @ORM\Entity
@@ -70,6 +72,16 @@ class User implements UserInterface
      * @ORM\Column(name="status", type="boolean", options={"default":0})
      */
     private $status;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="YouBrush\Bundle\ThemeBundle\Entity\ComponentGallery", mappedBy="users", cascade={"persist"})
+     */
+    private $componentGalleries;
+
+    public function __construct()
+    {
+        $this->componentGalleries = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -225,5 +237,32 @@ class User implements UserInterface
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return ComponentGallery[]|ArrayCollection
+     */
+    public function getComponentGalleries()
+    {
+        return $this->componentGalleries;
+    }
+
+    /**
+     * @param ComponentGallery $componentGalleries
+     */
+    public function setComponentGalleries($componentGalleries)
+    {
+        $this->componentGalleries = $componentGalleries;
+    }
+
+    /**
+     * @param ComponentGallery $componentGallery
+     * @return $this
+     */
+    public function addComponentGallery(ComponentGallery $componentGallery)
+    {
+        $this->componentGalleries[] = $componentGallery;
+
+        return $this;
     }
 }

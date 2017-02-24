@@ -1,21 +1,28 @@
 YouBrush\Bundle\CoreBundle\Entity\User:
-      UserTest{1..1}:
-        email: "gubarev.bizz@gmail.com"
-        name: <firstName()> <lastName()>
-        password: "$2a$12$sWwLop0fyYqrHiL.pV4HWuIdSPUttlWpUb.prFEdIqoUgWOAceZOK"
-        status: 1
-        type: "admin"
+      UserTemplate (template):
+          email: "gubarev.bizz@gmail.com"
+          name: <firstName()> <lastName()>
+          password: "$2a$12$sWwLop0fyYqrHiL.pV4HWuIdSPUttlWpUb.prFEdIqoUgWOAceZOK"
+          status: 1
+          type: ""
 
-      User{1..10}:
-        email: <email()>
-        name: <firstName()> <lastName()>
-        password: "$2a$12$sWwLop0fyYqrHiL.pV4HWuIdSPUttlWpUb.prFEdIqoUgWOAceZOK"
-        status: 1
-        type: "user"
+      UserAdminTest (extends UserTemplate):
+          email: "admin@example.com"
+          name: <firstName()> <lastName()>
+          password: "$2a$12$sWwLop0fyYqrHiL.pV4HWuIdSPUttlWpUb.prFEdIqoUgWOAceZOK"
+          status: 1
+          type: "admin"
 
-      Manager{1..10}:
-        email: <email()>
-        name: <firstName()> <lastName()>
-        password: "$2a$12$6D7E.zq9mCZPbFVIF637tOhYRXov8xO2Zfgd2/EzTIw8I9OfBnAU."
-        status: 1
-        type: "manager"
+      UserUserTest (extends UserTemplate):
+          email: <email()>
+          name: <firstName()> <lastName()>
+          password: "$2a$12$sWwLop0fyYqrHiL.pV4HWuIdSPUttlWpUb.prFEdIqoUgWOAceZOK"
+          status: 1
+          type: "user"
+
+      UserManagerTest (extends UserTemplate):
+          email: <email()>
+          name: <firstName()> <lastName()>
+          password: "$2a$12$sWwLop0fyYqrHiL.pV4HWuIdSPUttlWpUb.prFEdIqoUgWOAceZOK"
+          status: 1
+          type: "manager"

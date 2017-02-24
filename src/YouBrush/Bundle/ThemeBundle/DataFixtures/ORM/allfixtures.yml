@@ -1,3 +1,4 @@
 include:
     - Data/theme.yml
     - Data/component.yml
+    - Data/componentGallery.yml

@@ -1,6 +1,12 @@
 services:
     youbrush_theme_bundle.repository.component:
-        class: Doctrine\ORM\EntityRepository
+        class: YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments:
             - YouBrush\Bundle\ThemeBundle\Entity\Component
+
+    youbrush_theme_bundle.repository.component_gallery:
+        class: YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentGalleryRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - YouBrush\Bundle\ThemeBundle\Entity\ComponentGallery

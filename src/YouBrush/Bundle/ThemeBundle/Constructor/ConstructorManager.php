@@ -48,7 +48,6 @@ class ConstructorManager
 
         foreach ($components as $component) {
             if (in_array($component->getSystemName(), array_keys($this->components))) {
-//                $this->components[$component->getSystemName()]->
                 $processes[] = $this->components[$component->getSystemName()]->process($theme);
             }
         }

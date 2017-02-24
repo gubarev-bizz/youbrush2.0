@@ -9,5 +9,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@youbrush_theme_bundle.repository.component'
+            - '@security.token_storage'
+            - '@youbrush_theme_bundle.repository.component_gallery'
         tags:
             - { name: 'youbrush_theme_bundle.components', type: 'gallery' }
