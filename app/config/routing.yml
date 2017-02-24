@@ -1,3 +1,13 @@
 youbrush_theme_bundle:
     resource: "@YouBrushThemeBundle/Resources/config/routing.yml"
     prefix:   /
+
+youbrush_core_bundle:
+    resource: "@YouBrushCoreBundle/Controller/"
+    type:     annotation
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout

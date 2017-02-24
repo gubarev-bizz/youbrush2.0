@@ -1,5 +1,9 @@
-{% for theme in themes %}
-    <a href="{{ path('youbrush_theme_bundle_constructor_item', { themeId: theme.id }) }}">
-        {{ theme.title }}
-    </a>
-{% endfor %}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% for theme in themes %}
+        <a href="{{ path('youbrush_theme_bundle_constructor_item', { themeId: theme.id }) }}">
+            {{ theme.title }}
+        </a>
+    {% endfor %}
+{% endblock %}

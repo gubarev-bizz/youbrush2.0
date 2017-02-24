@@ -1,5 +1,6 @@
 <?php
-namespace YouBrush\Bundle\ThemeBundle\Entity\Traits;
+
+namespace YouBrush\Bundle\CoreBundle\Entity\Traits;
 
 trait IdentifiableEntityTrait
 {

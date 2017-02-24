@@ -4,8 +4,8 @@ namespace YouBrush\Bundle\ThemeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
-use YouBrush\Bundle\ThemeBundle\Entity\Traits\IdentifiableEntityTrait;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use YouBrush\Bundle\CoreBundle\Entity\Traits\IdentifiableEntityTrait;
 
 /**
  * @ORM\Entity(repositoryClass="YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentRepository")

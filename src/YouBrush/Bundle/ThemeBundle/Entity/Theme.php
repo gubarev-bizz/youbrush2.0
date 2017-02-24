@@ -5,7 +5,7 @@ namespace YouBrush\Bundle\ThemeBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
-use YouBrush\Bundle\ThemeBundle\Entity\Traits\IdentifiableEntityTrait;
+use YouBrush\Bundle\CoreBundle\Entity\Traits\IdentifiableEntityTrait;
 
 /**
  * @ORM\Entity
