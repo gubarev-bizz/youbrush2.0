@@ -3,17 +3,20 @@
 namespace YouBrush\Bundle\ThemeBundle\Constructor\Component\GalleryComponent;
 
 use Doctrine\ORM\EntityManager;
+use JMS\Serializer\Serializer;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use YouBrush\Bundle\ThemeBundle\Constructor\Component\ComponentAbstract;
 use YouBrush\Bundle\ThemeBundle\Constructor\Component\ComponentProcessorInterface;
+use YouBrush\Bundle\ThemeBundle\Constructor\Component\GalleryComponent\Form\ViewType;
 use YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentGalleryRepository;
 use YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentRepository;
 use YouBrush\Bundle\ThemeBundle\Entity\Theme;
 
-class GalleryProcessor extends ComponentAbstract implements ComponentProcessorInterface
+class GalleryComponent extends ComponentAbstract implements ComponentProcessorInterface
 {
     /**
-     * @var string
+     * {@inheritdoc}
      */
     protected $componentName = 'gallery';
 
@@ -26,30 +29,34 @@ class GalleryProcessor extends ComponentAbstract implements ComponentProcessorIn
      * @param EntityManager $em
      * @param ComponentRepository $componentRepository
      * @param TokenStorage $tokenStorage
+     * @param Serializer $serializer
+     * @param FormFactory $formFactory
      * @param ComponentGalleryRepository $componentGalleryRepository
      */
     public function __construct(
         EntityManager $em,
         ComponentRepository $componentRepository,
         TokenStorage $tokenStorage,
+        Serializer $serializer,
+        FormFactory $formFactory,
         ComponentGalleryRepository $componentGalleryRepository
     ) {
-        parent::__construct($em, $componentRepository, $tokenStorage);
+        parent::__construct($em, $componentRepository, $tokenStorage, $serializer, $formFactory);
         $this->componentGalleryRepository = $componentGalleryRepository;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function process(Theme $theme)
+    public function build(Theme $theme)
     {
-        $component = $this->getEntity();
-        $a = 1;
-    }
+        $components = $this->getEntity();
+        $form = $this->formFactory->create(ViewType::class)->createView();
 
-    public function form()
-    {
-//        $form = $this->form->c
+        return $this->serializer->serialize([
+            'components' => $components,
+            'form' => $form,
+        ], 'json');
     }
 
     /**
@@ -57,9 +64,7 @@ class GalleryProcessor extends ComponentAbstract implements ComponentProcessorIn
      */
     public function getEntity()
     {
-        return $this->componentRepository->findOneBy([
-            'systemName' => $this->componentName,
-        ]);
+        return $this->componentGalleryRepository->findByUser($this->getUser());
     }
 
     /**

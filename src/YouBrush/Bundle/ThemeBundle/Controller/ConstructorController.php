@@ -3,6 +3,7 @@
 namespace YouBrush\Bundle\ThemeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -22,8 +23,17 @@ class ConstructorController extends Controller
             throw new NotFoundHttpException(sprintf("Theme with id = %s not found.", $themeId));
         }
 
-        $this->get('youbrush_theme_bundle.constructor_manager')->process($theme);
+
 
         return $this->render('YouBrushThemeBundle:Constructor:item.html.twig');
+    }
+
+    public function loadThemeComponentsAction()
+    {
+        $theme = $this->getDoctrine()->getRepository('YouBrushThemeBundle:Theme')
+            ->find(25)
+        ;
+
+        return new JsonResponse($this->get('youbrush_theme_bundle.constructor_manager')->process($theme));
     }
 }

@@ -5,9 +5,12 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <script type="text/javascript" href="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

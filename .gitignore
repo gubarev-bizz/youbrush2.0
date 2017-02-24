@@ -14,3 +14,9 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/assets/
+.bowerrc
+bower.json
+src/YouBrush/Bundle/ThemeBundle/Entity/Repository/InterfaceComponentRepository.php
+var/cache/
+web/assets/

@@ -5,11 +5,13 @@ services:
             - '@doctrine.orm.default_entity_manager'
 
     youbrush_theme_bundle.component.gallery:
-        class: YouBrush\Bundle\ThemeBundle\Constructor\Component\GalleryComponent\GalleryProcessor
+        class: YouBrush\Bundle\ThemeBundle\Constructor\Component\GalleryComponent\GalleryComponent
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@youbrush_theme_bundle.repository.component'
             - '@security.token_storage'
+            - '@jms_serializer'
+            - '@form.factory'
             - '@youbrush_theme_bundle.repository.component_gallery'
         tags:
             - { name: 'youbrush_theme_bundle.components', type: 'gallery' }

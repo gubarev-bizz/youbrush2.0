@@ -11,9 +11,7 @@ interface ComponentProcessorInterface
      * @param Theme $theme
      * @return mixed
      */
-    public function process(Theme $theme);
-
-    public function form();
+    public function build(Theme $theme);
 
     /**
      * @return Component
