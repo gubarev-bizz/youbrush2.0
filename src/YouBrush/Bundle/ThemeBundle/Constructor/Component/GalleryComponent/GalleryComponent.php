@@ -8,7 +8,6 @@ use JMS\Serializer\Serializer;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use YouBrush\Bundle\ThemeBundle\Constructor\Component\ComponentAbstract;
 use YouBrush\Bundle\ThemeBundle\Constructor\Component\ComponentProcessorInterface;
@@ -96,5 +95,10 @@ class GalleryComponent extends ComponentAbstract implements ComponentProcessorIn
         return $this->componentRepository->findOneBy([
             'systemName' => $this->componentName,
         ]);
+    }
+
+    public function view()
+    {
+        return $this->engine->render('YouBrushThemeBundle:Constructor/Component/GalleryComponent:widget.html.twig');
     }
 }

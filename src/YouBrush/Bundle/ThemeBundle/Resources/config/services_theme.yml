@@ -8,5 +8,6 @@ services:
         class: YouBrush\Bundle\ThemeBundle\Theme\Themes\LandingPage\LandingPageTheme
         arguments:
             - '@templating'
+            - '@youbrush_theme_bundle.constructor_manager'
         tags:
             - { name: 'youbrush_theme_bundle.themes', type: 'landing_page' }

@@ -47,7 +47,7 @@ class ThemeManager
     {
         foreach ($this->themes as $type => $themeInstance) {
             if ($type === $theme->getSystemName()) {
-                return $themeInstance->render();
+                return $themeInstance->render($theme);
             }
         }
 

@@ -91,4 +91,12 @@ abstract class ComponentAbstract
     {
         return $this->token->getToken()->getUser();
     }
+
+    /**
+     * @return string
+     */
+    public function getComponentName()
+    {
+        return $this->componentName;
+    }
 }

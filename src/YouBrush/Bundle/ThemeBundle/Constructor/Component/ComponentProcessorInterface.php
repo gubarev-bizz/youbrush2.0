@@ -13,6 +13,8 @@ interface ComponentProcessorInterface
      */
     public function build(Theme $theme);
 
+    public function view();
+
     /**
      * @return Component
      */

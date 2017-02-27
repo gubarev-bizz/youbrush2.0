@@ -3,6 +3,7 @@
 namespace YouBrush\Bundle\ThemeBundle\Constructor;
 
 use Doctrine\ORM\EntityManager;
+use YouBrush\Bundle\ThemeBundle\Constructor\Component\ComponentAbstract;
 use YouBrush\Bundle\ThemeBundle\Constructor\Component\ComponentProcessorInterface;
 use YouBrush\Bundle\ThemeBundle\Entity\Theme;
 
@@ -53,5 +54,24 @@ class ConstructorManager
         }
 
         return $processes;
+    }
+
+    /**
+     * @param string $systemNameComponent
+     * @return array
+     */
+    public function getComponent($systemNameComponent)
+    {
+        $data = [];
+
+        /** @var ComponentProcessorInterface|ComponentAbstract $component */
+        foreach ($this->components as $component) {
+            if ($systemNameComponent === $component->getComponentName()) {
+                $data['entities'] = $component->getEntity();
+                $data['view'] = $component->view();
+            }
+        }
+
+        return $data;
     }
 }
