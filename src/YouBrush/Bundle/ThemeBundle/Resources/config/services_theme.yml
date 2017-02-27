@@ -1,0 +1,12 @@
+services:
+    youbrush_theme_bundle.theme.manager:
+        class: YouBrush\Bundle\ThemeBundle\Theme\ThemeManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    youbrush_theme_bundle.theme.themes.landing_page:
+        class: YouBrush\Bundle\ThemeBundle\Theme\Themes\LandingPage\LandingPageTheme
+        arguments:
+            - '@templating'
+        tags:
+            - { name: 'youbrush_theme_bundle.themes', type: 'landing_page' }

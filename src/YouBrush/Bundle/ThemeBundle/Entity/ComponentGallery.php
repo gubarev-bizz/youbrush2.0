@@ -2,13 +2,16 @@
 
 namespace YouBrush\Bundle\ThemeBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use YouBrush\Bundle\CoreBundle\Entity\Traits\IdentifiableEntityTrait;
 use YouBrush\Bundle\CoreBundle\Entity\User;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentGalleryRepository")
+ * @Serializer\ExclusionPolicy("all")
  */
 class ComponentGallery
 {
@@ -17,6 +20,7 @@ class ComponentGallery
     /**
      * @var string
      *
+     * @Serializer\Expose
      * @ORM\Column(type="string", length=255)
      * @SymfonyConstraints\NotBlank()
      */
@@ -27,6 +31,13 @@ class ComponentGallery
      * @ORM\JoinTable(name="components_users_gallery")
      */
     private $users;
+
+    /**
+     * @var ComponentGalleryImage[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ComponentGalleryImage", mappedBy="gallery")
+     */
+    private $galleryImages;
 
     /**
      * @return string
@@ -66,5 +77,21 @@ class ComponentGallery
     public function setUsers($users)
     {
         $this->users = $users;
+    }
+
+    /**
+     * @return ArrayCollection|ComponentGalleryImage[]
+     */
+    public function getGalleryImages()
+    {
+        return $this->galleryImages;
+    }
+
+    /**
+     * @param ArrayCollection|ComponentGalleryImage[] $galleryImages
+     */
+    public function setGalleryImages($galleryImages)
+    {
+        $this->galleryImages = $galleryImages;
     }
 }

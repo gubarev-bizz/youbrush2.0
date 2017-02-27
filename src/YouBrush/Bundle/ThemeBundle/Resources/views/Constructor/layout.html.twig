@@ -1,13 +1,28 @@
 {% extends "::base.html.twig" %}
 
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/vendor/vue/dist/vue.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/vue-resource/dist/vue-resource.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/constructor.js') }}"></script>
+{% endblock %}
+
 {% block body %}
-    <div id="app">
-        <div class="col-md-3"></div>
+    <div id="app" data-themeId="{{ theme.id }}">
+        <div class="col-md-3">
+            <div>
+                <button v-if="components" class="btn btn-success">Save</button>
+                <button v-else class="btn btn-success disabled">Save</button>
+            </div>
+            <div v-for="(component, index) in components">
+                <h2>${ index }</h2>
+                <div v-html="component.form"></div>
+            </div>
+        </div>
         <div class="col-md-9">
-            BODY
+            {% block content %}{% endblock %}
         </div>
     </div>
 
-    {% block content %}{% endblock %}
+
 
 {% endblock %}

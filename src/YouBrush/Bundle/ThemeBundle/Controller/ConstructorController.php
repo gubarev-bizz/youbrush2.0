@@ -2,8 +2,8 @@
 
 namespace YouBrush\Bundle\ThemeBundle\Controller;
 
+use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -23,17 +23,32 @@ class ConstructorController extends Controller
             throw new NotFoundHttpException(sprintf("Theme with id = %s not found.", $themeId));
         }
 
+        $layoutTheme = $this->get('youbrush_theme_bundle.theme.manager')->render($theme);
 
-
-        return $this->render('YouBrushThemeBundle:Constructor:item.html.twig');
+        return $this->render('YouBrushThemeBundle:Constructor:item.html.twig', [
+            'theme' => $theme,
+            'layoutTheme' => $layoutTheme,
+        ]);
     }
 
-    public function loadThemeComponentsAction()
+    /**
+     * @param string $themeId
+     * @return Response
+     */
+    public function loadThemeComponentsAction($themeId)
     {
         $theme = $this->getDoctrine()->getRepository('YouBrushThemeBundle:Theme')
-            ->find(25)
+            ->find($themeId)
+        ;
+        $response = $this->get('youbrush_theme_bundle.constructor_manager')
+            ->process($theme)
         ;
 
-        return new JsonResponse($this->get('youbrush_theme_bundle.constructor_manager')->process($theme));
+        $context = new SerializationContext();
+        $context->setSerializeNull(true);
+        $serializer = $this->get('jms_serializer');
+
+
+        return new Response($serializer->serialize($response, 'json', $context));
     }
 }

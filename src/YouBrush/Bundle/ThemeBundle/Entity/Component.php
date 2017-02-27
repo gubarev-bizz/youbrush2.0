@@ -6,10 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use YouBrush\Bundle\CoreBundle\Entity\Traits\IdentifiableEntityTrait;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="YouBrush\Bundle\ThemeBundle\Entity\Repository\ComponentRepository")
  * @UniqueEntity(fields="systemName", message="This system name is already in use.")
+ * @Serializer\ExclusionPolicy("all")
  */
 class Component
 {
@@ -20,6 +22,7 @@ class Component
      *
      * @ORM\Column(type="string", length=255)
      * @SymfonyConstraints\NotBlank()
+     * @Serializer\Expose
      */
     private $systemName;
 
@@ -34,6 +37,7 @@ class Component
     /**
      * @ORM\ManyToMany(targetEntity="Theme", inversedBy="components", cascade={"persist"})
      * @ORM\JoinTable(name="theme_components")
+     * @Serializer\Expose
      */
     private $themes;
 

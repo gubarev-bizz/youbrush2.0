@@ -23,6 +23,14 @@ class Theme
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     * @SymfonyConstraints\NotBlank()
+     */
+    private $systemName;
+
+    /**
      * @var ArrayCollection|Component[]
      *
      * @ORM\ManyToMany(targetEntity="Component", mappedBy="themes", cascade={"persist"})
@@ -75,5 +83,21 @@ class Theme
         $this->components[] = $component;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSystemName()
+    {
+        return $this->systemName;
+    }
+
+    /**
+     * @param string $systemName
+     */
+    public function setSystemName($systemName)
+    {
+        $this->systemName = $systemName;
     }
 }

@@ -12,6 +12,7 @@ services:
             - '@security.token_storage'
             - '@jms_serializer'
             - '@form.factory'
+            - '@templating'
             - '@youbrush_theme_bundle.repository.component_gallery'
         tags:
             - { name: 'youbrush_theme_bundle.components', type: 'gallery' }

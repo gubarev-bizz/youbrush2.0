@@ -9,3 +9,4 @@ youbrush_theme_bundle_constructor_item:
 youbrush_theme_bundle_constructor_load_components:
     path: /theme/constructor/{themeId}/api/load-components/
     defaults: { _controller: YouBrushThemeBundle:Constructor:loadThemeComponents }
+    methods: GET

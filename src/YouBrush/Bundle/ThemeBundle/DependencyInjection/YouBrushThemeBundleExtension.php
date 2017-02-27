@@ -17,5 +17,6 @@ class YouBrushThemeBundleExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__. '/../Resources/config'));
         $loader->load('services_repository.yml');
         $loader->load('services_component.yml');
+        $loader->load('services_theme.yml');
     }
 }
